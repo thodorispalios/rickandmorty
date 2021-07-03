@@ -65,9 +65,9 @@ var rickmortyRepo = (function() {
             var $imageElement = $('<img>');
             var $speciesElement = $('<p>' + item.species + '</p>');
             var $status = $('<p>' + item.status + '</p>');
-            var $gender = $('<p>' + item.gender + '</p>');
-            var $location = $('<p>' + item.location + '</p>');
-            var $episode = $('<p>' + (item.episode).length + '</p>');
+            var $gender = $('<p>' + 'Gender: ' + item.gender + '</p>');
+            var $location = $('<p>'+ 'Last seen location: '  + item.location + '</p>');
+            var $episode = $('<p>' + 'Number of episodes appeared: ' + (item.episode).length + '</p>');
 
             $imageElement.attr('src', item.imageUrl);
 
