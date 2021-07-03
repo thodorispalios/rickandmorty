@@ -140,3 +140,9 @@ button {
   background-color: rgba(3, 176, 200, 1);
   color: #fff;
 }
+
+img{
+display: block;
+max-width: 100%;
+margin-bottom: 15px;
+}

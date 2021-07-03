@@ -5,11 +5,12 @@ var rickmortyRepo = (function() {
     function loadList() {
         return $.ajax(apiUrl)
             .then (function(response) {
+                
                 response.results.forEach(function(item) {
                     var character = {
                         name: item.name,
                         detailsUrl: item.url,
-                        image: item.imageElement,
+                        image: item.image,
                         gender : item.gender,
                         status : item.status,
                         species : item.species
@@ -26,7 +27,7 @@ var rickmortyRepo = (function() {
         var $rickmortyLi = $('<li class="list-group-item"></li>');
         var $rickmortyButton = $(
             '<button type="button" class="btn btn-block btn-outline-* pop-button" data-toggle="modal" data-target="#pop-modal">' 
-             + character.image + character.name + character.gender + character.status + character.species + '</button>'
+             + `<img src=${character.image} alt=${character.name} />` + character.name + character.gender + character.status + character.species + '</button>'
         );
         $rickmortyButton.on('click', function() {
             showDetails(character);
