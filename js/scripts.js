@@ -21,7 +21,7 @@ var rickmortyRepo = (function() {
     function addListItem(character) {
         var $rickmortyLi = $('<li class="list-group-item"></li>');
         var $rickmortyButton = $(
-            '<button type="button" class="btn btn-block btn-outline-* pop-button" data-toggle="modal" data-target="#pop-modal">' + character.image
+            '<button type="button" class="btn btn-block btn-outline-* pop-button" data-toggle="modal" data-target="#pop-modal">'
             + character.name + '</button>'
         );
         $rickmortyButton.on('click', function() {
@@ -45,6 +45,11 @@ var rickmortyRepo = (function() {
             .then (function(response) {
                 item.imageUrl = response.image;
                 item.species = response.species;
+                item.status = response.status;
+                item.gender = response.gender;
+                item.location = response.location;
+                item.episode = response.episode;
+
             }).catch(function(e) {
                 console.error(e);
             });
@@ -55,12 +60,20 @@ var rickmortyRepo = (function() {
             var $nameElement = $('<h4>' + item.name + '</h4>');
             var $imageElement = $('<img>');
             var $speciesElement = $('<p>' + item.species + '</p>');
+            var $status = $('<p>' + item.status + '</p>');
+            var $gender = $('<p>' + item.gender + '</p>');
+            var $location = $('<p>' + item.location + '</p>');
+            var $episode = $('<p>' + item.episode + '</p>');
 
             $imageElement.attr('src', item.imageUrl);
 
             $('#character-name').html($nameElement);
             $('#image-element').html($imageElement);
             $('#species-element').html($speciesElement);
+            $('#status').html($status);
+            $('#gender').html($gender);
+            $('#location').html($location);
+            $('#episode').html($episode);
         });
     }  /* show modal container______________________ */
 
