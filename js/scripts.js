@@ -25,7 +25,7 @@ var rickmortyRepo = (function() {
     function addListItem(character) {
         var $rickmortyLi = $('<li class="list-group-item"></li>');
         var $rickmortyButton = $(
-            '<button type="button" class="btn btn-block btn-outline-* pop-button" data-toggle="modal" data-target="#pop-modal">' 
+            '<button type="button" class="pop-button" data-toggle="modal" data-target="#pop-modal">' 
              + character.image + character.name + character.gender + character.status + character.species + '</button>'
         );
         $rickmortyButton.on('click', function() {
@@ -63,8 +63,8 @@ var rickmortyRepo = (function() {
         $(document).on('click', '.pop-button', function() {
             var $nameElement = $('<h4>' + item.name + '</h4>');
             var $imageElement = $('<img>');
-            var $speciesElement = $('<p>' + item.species + '</p>');
-            var $status = $('<p>' + item.status + '</p>');
+            var $speciesElement = $('<p>' + item.status+ " - " + item.species + '</p>');
+            var $status;
             var $gender = $('<p>' + 'Gender: ' + item.gender + '</p>');
             var $location = $('<p>'+ 'Last seen location: '  + item.location + '</p>');
             var $episode = $('<p>' + 'Number of episodes appeared: ' + (item.episode).length + '</p>');

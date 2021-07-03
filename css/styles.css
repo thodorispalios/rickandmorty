@@ -109,6 +109,14 @@ button {
   justify-content: center;
   align-items: center;
   text-align: center;
+  border-radius: 4px;
+}
+
+.additional-info {
+  background-color: rgba(3, 176, 200, 1);
+  color: #fff;
+  width: auto;
+  height: auto;
 }
 
 .modal-title {
@@ -138,9 +146,4 @@ button {
   color: black;
   text-decoration: none;
   cursor: pointer;
-}
-
-.additional-info {
-  background-color: rgba(3, 176, 200, 1);
-  color: #fff;
 }
