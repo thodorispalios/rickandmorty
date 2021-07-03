@@ -27,7 +27,7 @@ var rickmortyRepo = (function() {
         var $rickmortyLi = $('<li class="list-group-item"></li>');
         var $rickmortyButton = $(
             '<button type="button" class="btn btn-block btn-outline-* pop-button" data-toggle="modal" data-target="#pop-modal">' 
-             + `<img src=${character.image} alt=${character.name} />` + character.name + character.gender + character.status + character.species + '</button>'
+             + `<img src=${character.image} alt=${character.name} id="button-img" />` + '<h4>' + character.name + '</h4>' + character.gender + character.status + character.species + '</button>'
         );
         $rickmortyButton.on('click', function() {
             showDetails(character);
