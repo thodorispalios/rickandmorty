@@ -8,7 +8,11 @@ var rickmortyRepo = (function() {
                 response.results.forEach(function(item) {
                     var character = {
                         name: item.name,
-                        detailsUrl: item.url
+                        detailsUrl: item.url,
+                        image: item.imageElement,
+                        gender : item.gender,
+                        status : item.status,
+                        species : item.species
                     };
                         add(character);
                 });
@@ -21,8 +25,8 @@ var rickmortyRepo = (function() {
     function addListItem(character) {
         var $rickmortyLi = $('<li class="list-group-item"></li>');
         var $rickmortyButton = $(
-            '<button type="button" class="btn btn-block btn-outline-* pop-button" data-toggle="modal" data-target="#pop-modal">'
-            + character.name + '</button>'
+            '<button type="button" class="btn btn-block btn-outline-* pop-button" data-toggle="modal" data-target="#pop-modal">' 
+             + character.image + character.name + character.gender + character.status + character.species + '</button>'
         );
         $rickmortyButton.on('click', function() {
             showDetails(character);
