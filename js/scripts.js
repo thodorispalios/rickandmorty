@@ -21,13 +21,13 @@ var rickmortyRepo = (function() {
                 .catch(function(e) {
                     console.error(e);
                 });
-    } /* feth and data_____________________________________*/
+    } /* fetch and data_____________________________________*/
 
     function addListItem(character) {
         var $rickmortyLi = $('<li class="list-group-item"></li>');
         var $rickmortyButton = $(
             '<button type="button" class="btn btn-block btn-outline-* pop-button" data-toggle="modal" data-target="#pop-modal">' 
-             + `<img src=${character.image} alt=${character.name} id="button-img" />` + '<h4>' + character.name + '</h4>' + character.gender + character.status + character.species + '</button>'
+             + `<img src=${character.image} alt=${character.name} id="button-img" />` +`<div>` + '<h5>' + character.name + '</h5>' + '<p>' + character.status + ' - ' + character.species + '</p>'+ `</div>` + '</button>'
         );
         $rickmortyButton.on('click', function() {
             showDetails(character);
@@ -52,7 +52,7 @@ var rickmortyRepo = (function() {
                 item.species = response.species;
                 item.status = response.status;
                 item.gender = response.gender;
-                item.location = response.location;
+                item.location = response.location.name;
                 item.episode = response.episode;
 
             }).catch(function(e) {
@@ -64,18 +64,16 @@ var rickmortyRepo = (function() {
         $(document).on('click', '.pop-button', function() {
             var $nameElement = $('<h4>' + item.name + '</h4>');
             var $imageElement = $('<img>');
-            var $speciesElement = $('<p>' + item.species + '</p>');
-            var $status = $('<p>' + item.status + '</p>');
-            var $gender = $('<p>' + item.gender + '</p>');
-            var $location = $('<p>' + item.location + '</p>');
-            var $episode = $('<p>' + (item.episode).length + '</p>');
+            var $speciesElement = $('<p>' + item.species + ' - ' + item.status + '</p>');
+            var $gender = $('<p>' + 'Gender: ' + item.gender + '</p>');
+            var $location = $('<p>' + 'Last seen location:' + item.location + '</p>');
+            var $episode = $('<p>' + 'Number of episodes appeared: ' + (item.episode).length + '</p>');
 
             $imageElement.attr('src', item.imageUrl);
 
             $('#character-name').html($nameElement);
             $('#image-element').html($imageElement);
             $('#species-element').html($speciesElement);
-            $('#status').html($status);
             $('#gender').html($gender);
             $('#location').html($location);
             $('#episode').html($episode);
