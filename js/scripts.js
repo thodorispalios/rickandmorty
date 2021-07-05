@@ -80,6 +80,26 @@ var rickmortyRepo = (function() {
         });
     }  /* show modal container______________________ */
 
+
+    function paginated_fetch(
+        page = 1,
+        previousResponse = []
+      ) {
+        return fetch(`${apiUrl}&page=${info.pages}`)
+          .then(response => response.json())
+          .then(newResponse => {
+            const response = [...previousResponse, ...newResponse];
+      
+            if (newResponse.length !== 0) {
+               page++;
+      
+              return paginated_fetch(apiUrl, page, response);
+            }
+      
+            return response;
+          });
+      } /*Pagination */
+
     return {
         add: add,
         getAll: getAll,
